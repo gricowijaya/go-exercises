@@ -1,3 +1,7 @@
+# Roadmap Reference
+
+Here's some roadmap reference to learn https://roadmap.sh/pdfs/go.pdf
+
 ## Go
 
 It is a compiled driven language, progress in the directory according to the https://www.openmymind.net/assets/go/go.pdf 
@@ -25,7 +29,7 @@ After we write the code we can compile with
 go run main.go
 ```
 
-or 
+or if you want to create the executable files you can create the go build main.go.
 
 ```
 go build main.go
