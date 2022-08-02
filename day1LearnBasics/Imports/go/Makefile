@@ -4,9 +4,3 @@ build:
 run: 
 	cd ./bin; ./main; cd ..
 
-clean:
-
-
-
-
-
