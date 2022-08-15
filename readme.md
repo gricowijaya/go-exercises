@@ -179,4 +179,461 @@ ref: https://go.dev/blog/using-go-modules
 
 OCT 15th WISUDA KA OKA.
 
+## Initialize
 
+creates a new module
+
+```bash
+go mod init
+```
+
+We can create the file dir for the module:
+
+```bash
+mkdir new-exercises
+```
+
+then after creating the directory we go into that directory. 
+
+```bash
+cd new-exercises
+```
+
+then launch into programming code editor
+
+```
+touch hello.go && nvim hello.go
+
+```
+
+and after that module we can put the code in the `hello.go`  
+
+
+```
+package hello
+
+func Hello() string {
+  return "Hello, World"
+}
+```
+
+and create more such as `hello_test.go`
+
+```
+package hello
+
+import "testing"
+
+func TestHello(t *testing.T) {
+  want := "Hello, World"
+          if got := Hello(); got != want {
+            t.Error
+          }
+}
+```
+
+when creating the go-modules we should create the namespacing such as bin/ src/ 
+
+such as this below.
+
+```bash
+go mod init new-exercises.com/gricowijaya/new-exercises
+```
+
+after that we can get the go.mod file. 
+
+we can try to cat the `go.mod` file
+
+## Adding the dependency
+
+```bash
+go get github.com/rsc/quote
+```
+
+then do testing the module is running or not
+
+```go
+go test
+```
+
+then after it's all good we can modify the file `hello.go` file 
+
+in the hello file is we can create the import file and after that we can do go mod init 
+
+```
+package hello
+
+import "rsc.io/quote"
+
+func Hello() string {
+  return "Hello, World"
+}
+```
+
+There are direct dependencies and indirect dependencies. --> search more about this.
+
+If we want to get all package list then we can create 
+
+```
+go list -m all
+```
+
+To get all the packages 
+
+NOTES : both `go.mod` and `go.sum` must be checked in the version control 
+
+## Upgrading the dependency
+
+We should list the file first such as using this command:
+
+```
+go list -m all
+```
+
+after that we can also get the try to get the content of the `go.mod` file : 
+
+```
+cat go.mod
+```
+
+for example we want to upgrade the `rsc.io/sampler`
+
+just type 
+
+to get the latest
+
+```
+go get rsc.io/sampler
+```
+
+to specify the version
+
+```
+go get rsc.io/sampler@v0.3.0
+```
+
+# Packages
+
+To Use the standard library you can use this link to read the documentation
+
+https://pkg.go.dev/std
+
+
+`_` (throwing null error)
+
+every program have package main and func main();
+
+for example:
+
+```
+package main 
+
+import ( "fmt" )
+
+func main() {
+  n, _ := fmt.Println("Hello, world", 42, true)
+  fmt.Println(n)
+
+  // the _ is returning null error (if there's an error);
+}
+```
+
+# Short Declaration operator
+
+example in the `short-declaration-operator/` directory
+
+The Short Declaration Variables is allowing to write code and  
+
+example 
+
+
+```
+x := 42 // declare and assign
+
+fmt.Println(x)
+
+y := 100 + 24 // making the expression for a statement
+
+fmt.Println(y)
+
+```
+
+## Identifiers
+
+Identifiers --> is the program entities such as variables and types.
+An identifiers is a sequence of one or more letters and digits.
+It must be a letter;
+
+There predeclared identifiers
+
+## The var Keyword
+
+The var keyword for var is just to get the value for shortage for variabels. 
+There's also a zero value. 
+
+```
+package main
+
+import ("fmt")
+
+// declare and assign
+var y = 49
+
+func main() {
+  x := 42
+  fmt.printLn
+}
+
+```
+
+## Data Type
+
+To get the type we can use the 
+
+fmt.Printf("%T", y);
+
+The Data type in Go is static not dynamic like Javascript. 
+
+It Has Primitive and Composite Data types (Array, Strings etc).
+
+## Zero Value
+
+Declare a variable to be a certain type.
+
+
+```
+package main 
+
+import ("fmt")
+
+var y string
+
+func main() {
+  fmt.Println("start", y, "ending"); // output : start y ending
+}
+
+// assign into zero value
+y = "Chaca"
+```
+
+## Fmt Package
+
+The Format package or `fmt` has many methods such as `Print`, `Println`, `Printf`, `Scanf`
+
+To take input:
+
+```
+package main
+
+import ("fmt)
+
+var y int;
+
+func main() { 
+  fmt.Scanf("%y"); // stdin
+  fmt.Println(y); // stdout
+}
+```
+
+## Converting type
+
+In the go programming language is kinda like the casting feature in C but 
+in Go it's called converting which used for changing data types to Type  
+
+```
+type Integer int
+
+import ("fmt")
+
+
+func main() { 
+  var i int;
+  i = 1;
+  fmt.Printf("%T",i); // output :int
+  i = Integer(i)
+  fmt.Printf("%T",i); // output :string
+}
+```
+
+## Details on The Numeric Types
+
+In the Numeric Types we can try to create  such as uint8 (unsigned integer 8-bit) int8 etc
+
+https://www.geeksforgeeks.org/data-types-in-go/
+
+## String
+
+In Go Programming Language String is just a set of empty seqeunces of bytes. 
+The predeclared string type is called `string` there are a slice of bytes.
+
+```
+package main
+
+import("fmt")
+
+func main() { 
+  s := "Hello World"
+  fmt.Println(s);
+  fmt.Println("%T\n", s);
+
+  bytesString := []byte(s); // print the slice of bytes
+  fmt.Println(bytesString);
+  fmt.Println("%T\n", bytesString); 
+}
+```
+
+## Constants
+
+Which is the keyword `const` we can try to implement the const in this snippets 
+
+```
+package main
+
+import("fmt")
+
+const a = 1;
+const b = 2;
+const c = 3;
+
+func main() {
+  fmt.Println(a);
+  fmt.Println(b);
+  fmt.Println(c);
+}
+```
+
+Another way to declare this is just like below.
+
+```
+package main
+
+import("fmt")
+
+const (
+  a int = 1
+  b float64 = 2
+  c string = 3
+)
+```
+
+## Iota
+
+Is a special character that can be used sas an auto
+it can be writtensuch as using the code below
+
+```
+package main 
+import("fmt")
+
+const (
+  a = iota
+  b
+  c
+)
+
+const (
+  d
+  c
+  e
+)
+
+func main() {
+  fmt.Println("a\n"); // output : 0
+  fmt.Println("b\n"); // output : 1
+  fmt.Println("c\n"); // output : 2
+  fmt.Printf("%T\n", a); // output : int 
+  fmt.Printf("%T\n", b); // output : int 
+  fmt.Printf("%T\n", c); // output : int 
+}
+```
+
+## Bit Shifting
+
+We can transform the bit number into int with some of this technique. 
+Using Iota let's try to create it !
+
+
+```
+package main 
+
+import (
+  "fmt"
+)
+
+const 
+
+func main() {
+  x := 2
+  fmt.Printf("[x] == %d\t\t%b\n", x, x); // output : %d is short for decimal and %b is for binary 
+
+  y := x << 1 //  assign shited x by 1 into y
+  fmt.Printf("[x] == %d\t\t%b\n", y, y); // output : %d is short for decimal and %b is for binary 
+}
+
+```
+
+Why we should learn about the bit shifting ? Let's take an example here:
+
+
+```
+package main 
+
+import (
+  "fmt"
+)
+
+func main() {
+
+  kb := 1024
+  mb := 1024 * kb
+  gb := 1024 * mb
+
+  fmt.Println("\t[decimal]\t\t[binary]");
+  fmt.Printf("[kb] == %d\t\t%b\n", kb, kb); // output : 
+  fmt.Printf("[mb] == %d\t\t%b\n", mb, mb); // output : 
+  fmt.Printf("[gb] == %d\t\t%b\n", gb, gb); // output : 
+}
+
+
+```
+
+The output from the program above is like the below snippets
+
+```
+[decimal]		        [binary]
+[kb] == 1024		    10000000000
+[mb] == 1048576		  100000000000000000000
+[gb] == 1073741824	1000000000000000000000000000000
+```
+
+that is with a declarable variable with iota we can manipulate the program 
+so it'll be more automated declaration by the go compiler, because the kb mb gb
+is incremented by default with iota declaration for example of code we can 
+write just like the below code.
+
+```
+package main 
+
+import (
+  "fmt"
+)
+
+// built with iota
+const ( 
+  _ = iota;
+  kb = 1 << ( iota * 10  )
+  mb = 1 << ( iota * 10 )
+  gb = 1 << ( iota * 10 )
+) 
+
+func main() {
+  fmt.Println("\t[decimal]\t\t[binary]");
+  fmt.Printf("[kb] == %d\t\t%b\n", kb, kb);  
+  fmt.Printf("[mb] == %d\t\t%b\n", mb, mb);  
+  fmt.Printf("[gb] == %d\t%b\n", gb, gb);    
+}
+```
+
+it will create the same output from the program before but as we can see it is
+a good practice by using iota in shifting an incremental values rather 
+than declare a variables, but it is a personal preferences.
