@@ -637,3 +637,52 @@ func main() {
 it will create the same output from the program before but as we can see it is
 a good practice by using iota in shifting an incremental values rather 
 than declare a variables, but it is a personal preferences.
+
+## Exercises
+
+In Go we can write the assign a comparation between a value such as <= >= etc.
+The code is just like below. 
+
+```
+package main 
+
+import("fmt")
+
+func main() {
+  a := ( 42 == 42) // output : true
+  b := ( 42 <= 43) // output : true
+  c := ( 42 >= 43) // output : false
+  d := ( 42 != 43) // output : true
+  e := ( 42 <  43) // output : true
+  f := ( 42 >  43) // output : false
+
+  fmt.Println(a, b, c, d, e, f);
+}
+```
+In the code above we can assign the value of `a b c d e f` for getting the 
+boolean value of the condition is true or false 
+
+## TYPED and UNTYPED Constants
+
+We can expand the program above using the TYPED and UNTYPED values.
+the Procedure we need to create is just like this.
+
+1. We need to set the constant variable first.
+2. Assign the variable into using the typed and untyped variabels
+
+```
+package main 
+
+import("fmt")
+
+const (
+  a = 42 // UNTYPED constant -- flexibility for the compiler beware they can read this as a string.
+  b int = 43 // TYPED constant -- more precise type for the compiler.
+)
+
+func main() {
+  fmt.Println(a, b);
+  fmt.Printf("%T, %T", a, b); // if we want to see the data type of the variables
+}
+```
+
