@@ -27,13 +27,13 @@ func main() {
 
 After we write the code we can compile with  
 
-```
+```bash
 go run main.go
 ```
 
 or if you want to create the executable files you can create the go build main.go.
 
-```
+```bash
 go build main.go
 ```
 
@@ -106,7 +106,7 @@ The `pkg` folder is to put the file of compiled archived library so we don't nee
 
 ## Go Help Command
 
-```
+```bash
 go help
 ```
 
@@ -114,14 +114,14 @@ go help
 
 Two Important Environment Variables
 
-```
+```env
 GOPATH = workspace
 GOROOT = binary installation of Go
 ```
 
 Just Type
 
-```
+```bash
 go env 
 ```
 
@@ -129,7 +129,7 @@ go env
 
 First of all we need to create the module in the project directory with this command 
 
-```
+```bash
 go mod init <name of the module>
 ```
 
@@ -137,7 +137,7 @@ go mod init <name of the module>
 
 So Go have this features with the command `fmt` so all code will look the same. Just run 
 
-```
+```bash
 go fmt <dir/files you want to format> 
 ```
 
@@ -201,7 +201,7 @@ cd new-exercises
 
 then launch into programming code editor
 
-```
+```bash
 touch hello.go && nvim hello.go
 
 ```
@@ -209,7 +209,7 @@ touch hello.go && nvim hello.go
 and after that module we can put the code in the `hello.go`  
 
 
-```
+```go
 package hello
 
 func Hello() string {
@@ -219,7 +219,7 @@ func Hello() string {
 
 and create more such as `hello_test.go`
 
-```
+```go
 package hello
 
 import "testing"
@@ -260,7 +260,7 @@ then after it's all good we can modify the file `hello.go` file
 
 in the hello file is we can create the import file and after that we can do go mod init 
 
-```
+```go
 package hello
 
 import "rsc.io/quote"
@@ -274,7 +274,7 @@ There are direct dependencies and indirect dependencies. --> search more about t
 
 If we want to get all package list then we can create 
 
-```
+```bash
 go list -m all
 ```
 
@@ -286,13 +286,13 @@ NOTES : both `go.mod` and `go.sum` must be checked in the version control
 
 We should list the file first such as using this command:
 
-```
+```bash
 go list -m all
 ```
 
 after that we can also get the try to get the content of the `go.mod` file : 
 
-```
+```bash
 cat go.mod
 ```
 
@@ -302,13 +302,13 @@ just type
 
 to get the latest
 
-```
+```bash
 go get rsc.io/sampler
 ```
 
 to specify the version
 
-```
+```bash
 go get rsc.io/sampler@v0.3.0
 ```
 
@@ -325,7 +325,7 @@ every program have package main and func main();
 
 for example:
 
-```
+```go
 package main 
 
 import ( "fmt" )
@@ -347,7 +347,7 @@ The Short Declaration Variables is allowing to write code and
 example 
 
 
-```
+```go
 x := 42 // declare and assign
 
 fmt.Println(x)
@@ -371,7 +371,7 @@ There predeclared identifiers
 The var keyword for var is just to get the value for shortage for variabels. 
 There's also a zero value. 
 
-```
+```go
 package main
 
 import ("fmt")
@@ -390,7 +390,9 @@ func main() {
 
 To get the type we can use the 
 
+```go 
 fmt.Printf("%T", y);
+```
 
 The Data type in Go is static not dynamic like Javascript. 
 
@@ -401,7 +403,7 @@ It Has Primitive and Composite Data types (Array, Strings etc).
 Declare a variable to be a certain type.
 
 
-```
+```go
 package main 
 
 import ("fmt")
@@ -422,7 +424,7 @@ The Format package or `fmt` has many methods such as `Print`, `Println`, `Printf
 
 To take input:
 
-```
+```go
 package main
 
 import ("fmt)
@@ -440,7 +442,7 @@ func main() {
 In the go programming language is kinda like the casting feature in C but 
 in Go it's called converting which used for changing data types to Type  
 
-```
+```go
 type Integer int
 
 import ("fmt")
@@ -466,7 +468,7 @@ https://www.geeksforgeeks.org/data-types-in-go/
 In Go Programming Language String is just a set of empty seqeunces of bytes. 
 The predeclared string type is called `string` there are a slice of bytes.
 
-```
+```go
 package main
 
 import("fmt")
@@ -486,7 +488,7 @@ func main() {
 
 Which is the keyword `const` we can try to implement the const in this snippets 
 
-```
+```go
 package main
 
 import("fmt")
@@ -504,7 +506,7 @@ func main() {
 
 Another way to declare this is just like below.
 
-```
+```go
 package main
 
 import("fmt")
@@ -521,7 +523,7 @@ const (
 Is a special character that can be used sas an auto
 it can be writtensuch as using the code below
 
-```
+```go
 package main 
 import("fmt")
 
@@ -553,7 +555,7 @@ We can transform the bit number into int with some of this technique.
 Using Iota let's try to create it !
 
 
-```
+```go
 package main 
 
 import (
@@ -575,7 +577,7 @@ func main() {
 Why we should learn about the bit shifting ? Let's take an example here:
 
 
-```
+```go
 package main 
 
 import (
@@ -599,7 +601,7 @@ func main() {
 
 The output from the program above is like the below snippets
 
-```
+```txt
 [decimal]		        [binary]
 [kb] == 1024		    10000000000
 [mb] == 1048576		  100000000000000000000
@@ -611,7 +613,7 @@ so it'll be more automated declaration by the go compiler, because the kb mb gb
 is incremented by default with iota declaration for example of code we can 
 write just like the below code.
 
-```
+```go
 package main 
 
 import (
@@ -647,7 +649,7 @@ https://medium.com/learning-the-go-programming-language/bit-hacking-with-go-e0ac
 In Go we can write the assign a comparation between a value such as <= >= etc.
 The code is just like below. 
 
-```
+```go
 package main 
 
 import("fmt")
@@ -674,7 +676,7 @@ the Procedure we need to create is just like this.
 1. We need to set the constant variable first.
 2. Assign the variable into using the typed and untyped variabels
 
-```
+```go
 package main 
 
 import("fmt")
@@ -703,7 +705,7 @@ is to update the condition so the init also will be updated.
 
 ## For Loop
 
-```
+```go
 package main
 
 import("fmt")
@@ -717,7 +719,7 @@ func main() {
 
 The output for the program above is will be like 
 
-```
+```txt
 loop iteration of 1
 loop iteration of 2
 loop iteration of 3
