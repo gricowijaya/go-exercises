@@ -2,7 +2,7 @@
 
 Here's some roadmap reference to learn https://roadmap.sh/pdfs/go.pdf
 
-## Go
+# Go
 
 Why Use Go ? There's Node JS
 
@@ -638,6 +638,10 @@ it will create the same output from the program before but as we can see it is
 a good practice by using iota in shifting an incremental values rather 
 than declare a variables, but it is a personal preferences.
 
+For more Bit Hacking we can also reference to this article : 
+
+https://medium.com/learning-the-go-programming-language/bit-hacking-with-go-e0acee258827
+
 ## Exercises
 
 In Go we can write the assign a comparation between a value such as <= >= etc.
@@ -686,3 +690,41 @@ func main() {
 }
 ```
 
+# Control Flow in Go
+
+In Go Programming Language we can use the control flow to create the such loop
+
+A Loop contain a init, condition, and post. You may ask, what are those ?
+
+init stands for initialization variables, condition is for conditioning the 
+variables in the looping section such as how to do want control this looping 
+(because of course we don't want a infinite looping program) and post is control 
+is to update the condition so the init also will be updated.   
+
+## For Loop
+
+```
+package main
+
+import("fmt")
+
+func main() {
+  for i := 1; i < 4; i++ {
+    fmt.Printf("loop iteration of %d\n", i );
+  }
+}
+```
+
+The output for the program above is will be like 
+
+```
+loop iteration of 1
+loop iteration of 2
+loop iteration of 3
+```
+
+Well the above program is a simple program which will run just word of 
+'loop iteration of {number of iteration}'
+
+Meanwhile go there are so many ways to write iteration. 
+In the go environment we can use many keyword for using iteration  
