@@ -1174,3 +1174,54 @@ func main() {
 }
 
 ```
+
+# Functions
+
+We Can use packages or functions which we can use to programming.
+
+The Function parameters
+
+```txt
+func (r receiver) identifiers(parameters) (return(s))) {...}
+```
+
+```go
+func foo() {
+  fmt.Println("Hello From Foo")
+}
+```
+
+We can pass parameter using the pass by value for example 
+
+```go
+func name(s string) {
+  fmt.Println("Hello my name is ", s)
+}
+```
+
+To return a value we can create how to use the 
+
+```go
+func woo()
+```
+
+## Variadic Paramater
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+  foo(1, 2, 3);
+}
+
+// foo is a variadic function. 
+// It can be called in the following ways:
+// foo()
+func foo(args ...int) {
+  fmt.Println(args)
+}
+
+```
+
