@@ -1,6 +1,10 @@
+* NOTES : The documentation with pdf version is at the file ./documentation/readme.pdf
+
 # Roadmap Reference
 
 Here's some roadmap reference to learn https://roadmap.sh/pdfs/go.pdf
+
+---
 
 # Go
 
@@ -25,6 +29,8 @@ func main() {
 
 ```
 
+---
+
 After we write the code we can compile with  
 
 ```bash
@@ -40,6 +46,8 @@ go build main.go
 then we can have the executable of the source code of hello world program.  
 
 That's basically the process so we can try to write the Makefile.
+
+---
 
 ## Running every Section
 
@@ -82,6 +90,8 @@ documentation at
 godoc -http=:6060
 ```
 
+---
+
 ## Go Modules
 
 It's an additional features into which to simplify the package for Go Workspace Program.    
@@ -109,6 +119,7 @@ The `pkg` folder is to put the file of compiled archived library so we don't nee
 ```bash
 go help
 ```
+---
 
 ## Environment Variables
 
@@ -1205,7 +1216,9 @@ To return a value we can create how to use the
 func woo()
 ```
 
-## Variadic Paramater
+---
+
+## Variadic Parameters
 
 ```go
 package main
@@ -1223,5 +1236,357 @@ func foo(args ...int) {
   fmt.Println(args)
 }
 
+```
+---
+
+## Methods
+
+Adding methods into a type of struct can be easily done with passing the 
+type of struct into the function hence we can get the type method. 
+
+```go
+package main
+
+import (
+  "fmt"
+)
+
+// we can create the struct of person
+type person struct {
+  first string
+  last string
+
+}
+
+// then we can create the struct of secretAgent that inherit from person
+type secretAgent struct {
+  person
+  ltk bool
+}
+
+// pass the secret agent type into the function speak
+// the purposes of this is to create any value with the the type of secret Agent have the method of speak
+func (s secretAgent) speak() {
+  fmt.Println("I am ", s.first, s.last, " and I have the licencse to kill value of ", s.ltk);
+
+}
+
+// the main function
+func main() {
+  // value of secretAgent type have the access the method of speak
+  firstSecretAgent := secretAgent {
+    // assign the value
+    person: person {
+      "James", 
+      "Bond",
+    },
+    ltk:true, // set to true because he is a secret agent
+  }
+  // print the values of firstSecretAgent variables
+  fmt.Println(firstSecretAgent)
+  
+  // run the method of speak for secret agent
+  firstSecretAgent.speak();
+}
+```
+
+---
+
+## Polymorphism
+
+basically polymorphism is running the same method with different type.
+As a human have a method of speak hence a person is a human and a secret agent 
+is a person which impelemting the method of human into secret agent.
+
+```go
+package main
+
+import (
+  "fmt"
+)
+
+type person struct {
+  first string
+  last string
+}
+
+type secretAgent struct {
+  person
+  ltk bool
+}
+
+
+// anybody or type who have the method of speak is implement an human interface   
+// keyword identifier type
+type human interface {
+  speak()
+}
+
+func bar(h human) {
+  fmt.Println("i called human ", h);
+}
+
+//---------------------------------------------
+// BELOW is the same method but different type
+
+// any value with the the type of secret Agent have the method of speak
+func (s secretAgent) speak() {
+  fmt.Println("I am ", s.first, s.last, " and I have the licencse to kill value of ", s.ltk);
+
+}
+
+// let's add the person to the method for speak so it's implementing the human interface
+func (p person) speak() {
+  fmt.Println("I am ", p.first, p.last, " and I am a person");
+}
+
+func main() {
+  firstSecretAgent := secretAgent {
+    person: person {
+      "James", 
+      "Bond",
+    },
+    ltk:true,
+  }
+
+  firstPerson := person {
+    first: "Dr. ", 
+    last: "Octopus",
+  }
+
+  fmt.Println(firstSecretAgent);
+  fmt.Println(firstPerson);
+  firstSecretAgent.speak();
+
+  // first Person is a type of person but it has a function of person 
+  // so we can pass the parameter of first person into a human parameter.  
+  bar(firstPerson); 
+}
+```
+
+## Anonymous Func
+
+An anonymous funcion is a function without a name. Why do we need this type of function? 
+because an anonymous function is also called function literal. It ellows us 
+to assigned to the function into a variable. so when we want to do some small 
+process we can create to the function. 
+
+For Example of anonymous func is just like down below
+
+```go 
+package main
+
+import("fmt")
+
+func main() {
+  foo()
+
+  // this is another anonymous function with no argument passed 
+  func() {
+    fmt.Println("Anonymous func")
+  }() // include the parenthses which pass nothing
+
+  // this is another anonymous function with argument passed 
+  print42 := func(x int) {
+    fmt.Printf("Anonymous func which take args of x = %d", x);
+  }(42) // include the parenthses which pass nothing
+
+  // because we need to output of the value of 42 then this print 42   
+  print42(); }
+
+func foo() {
+  fmt.Println("foo() Function Hello World")
+}
+```
+
+From the above function we can get the `print42` 
+to print `Anonymous func which take args of x 42` 
+
+This also called function expression
+
+## Returning Function
+
+We can try to create a function that returns a function but first of all
+Why we would wanna do that ? First off all it's fun but second of all it'll 
+be good for the callback functions
+
+```go
+package main
+import("fmt")
+
+func main() {
+  stringThis := foo()
+  fmt.Println(stringThis)
+
+  x := bar()  
+  fmt.Printf("%T\n", x)       // going to return a func int() which is the type of x    
+  fmt.Printf("%d\n", x())     // return 451
+  
+}
+
+func foo() string {
+  s := "Hello World"
+  return s
+}
+
+// function bar is a will return a function that returns an intkj
+func bar() func() int {
+  return func() int {
+    return 451
+  }
+}
+```
+
+## Callback
+
+Callback function is a function that receives an argument of a type that is 
+a function for example:
+
+```go
+package main
+
+import ("fmt")
+
+func main() {
+  ii := []int{1,3,4,1,5,6}
+  fmt.Println("Hello, World");
+  s := sum(ii...)
+  s2 := even(sum, ii...) // pass the function of sum and also the ii slice
+  s3 := odd(sum, ii...)  // check the function
+  fmt.Println(s)
+  fmt.Println("All even Numbers", s2)
+  fmt.Println("All odd Numbers", s3)
+}
+
+func sum(xi ...int) int {
+  fmt.Printf("%T\n", xi) // output : slice of int
+  total := 0
+  for _, value := range xi {
+    total += value
+  }
+  return total
+}
+
+// passing a function of variadic parameter of int 
+// sum of all even number
+func even(f func(xi ...int) int, vi ...int) int{
+  var yi []int
+  for _, value := range vi {
+    if value % 2 == 0 {
+      yi = append(yi, value);
+    }
+  }
+
+  return f(yi...) // getting the unilimited number of slice of int
+}
+
+// passing a function of variadic parameter of int 
+// sum of all odd number
+func odd(f func(xi ...int) int, vi ...int) int{
+  var yi []int
+  for _, value := range vi {
+    if value % 2 != 0 {
+      yi = append(yi, value);
+    }
+  }
+
+  return f(yi...) // getting the unilimited number of slice of int
+}
+
+```
+
+## Closure
+
+The closure scope in golang such local and global. If there's a code block 
+in a code block then we cannot use it globally. for example we will create :
+a incrementor function that'll help us to understand the closure. 
+
+```go 
+package main
+
+import("fmt")
+
+func main() {
+  i := incrementor() // i variable is a function expression of incrementor()
+  j := incrementor() // j variable is a function expression of incrementor()
+
+  fmt.Println("i func expression", i()) // output : 1
+  fmt.Println("j func expression", j()) // output : 1  
+  fmt.Println("j func expression", j()) // output : 2 (x + 1)
+  fmt.Println("j func expression", j()) // output : 3 (x + 1)
+  fmt.Println("j func expression", j()) // output : 4 (x + 1)
+  fmt.Println("j func expression", j()) // output : 5 (x + 1)
+  fmt.Println("j func expression", j()) // output : 6 (x + 1)
+}
+
+
+// this function will return a function that return an int
+func incrementor() func() int {
+  // this `x` variable below will be valid until a few line
+  // each time this function is called then golang will 
+  // create a new address for the x variable         
+  // that's why even if this is a local function it still 
+  // can increment the value of the value of x 
+  var x int 
+  return func() int{
+     x++ // increment the x + 1;
+     return x
+  }
+}
+```
+
+The Description of the code is already at the code comments
+
+## Recursion
+
+What is recursion to be exact ? Basically look at this meme.
+
+![Recursion Meme](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpics.me.me%2Fending-a-recursive-function-ending-a-recursive-function-ending-a-38116677.png&f=1&nofb=1)
+
+Recursion is will have the memory impact from the users because it will loop to call a function
+There's are many ways to loop a program in a programming paradigm such as for loop 
+while loop do-while loop for in range. One of them is to trick them using recursion.
+
+Recursion is a function that will call itself that will using how to return 
+the function that they see a lot of different things of a function. For Example
+we can create the factorial function which will be demonstrated like the code below:
+
+```go
+package main
+
+import("fmt")
+
+// using recursive function 
+func factorialRecursive(n int) int {
+  fmt.Println("Process ", n, " * ", n - 1)
+  // stop the function for calling itself after we hit n == 0
+  if n == 0 { return 1} 
+  return n * factorialRecursive(n - 1) // return the factorial by calling it self
+}
+
+// using loops
+func factorialLoop(n int) int {
+  var x int
+  // initialise the value x into 1 why ? because we will multiply the x with n
+  // if we not assign x into 1 then we won't get the value.   
+  x = 1 
+
+  // initialize the incremental variable (i) then assign n into variable i 
+  // why ? because we will decrement the value of n after it multiply by itself.
+  for i := n; n > 0 ; n-- {
+    x *= n 
+    fmt.Printf("i[%d] x[%d] n[%d]\n", i, x, n) // trace the value on i, x, and n
+  }
+
+  // return the value of x which is the result of factorial of n
+  return x
+}
+
+func main() {
+  n := factorialRecursive(5);
+  fmt.Println("The factorialRecursive value of 5 is = ", n)
+  x := factorialLoop(5);
+  fmt.Println("The factorialLoop value of 5 is = ", x)
+}
 ```
 
