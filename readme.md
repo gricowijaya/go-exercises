@@ -1,6 +1,7 @@
 # Table of Contents
 1. [Roadmap References](#roadmap)
 2. [Why Go?](#why)
+   2.1 [Practice](#practice)
 
 * NOTES : The documentation with pdf version is at the file ./documentation/readme.pdf
 
@@ -53,7 +54,7 @@ That's basically the process so we can try to write the Makefile.
 
 ---
 
-## Running every Section
+## Running every Section <a name="practice"><a/>
 
 To run every section of this writing excercices you can try to type this.
 
