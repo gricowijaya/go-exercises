@@ -1,12 +1,16 @@
+# Table of Contents
+1. [Roadmap References](#roadmap)
+2. [Why Go?](#why)
+
 * NOTES : The documentation with pdf version is at the file ./documentation/readme.pdf
 
-# Roadmap Reference
+# Roadmap Reference <a name="roadmap"></a>
 
 Here's some roadmap reference to learn https://roadmap.sh/pdfs/go.pdf
 
 ---
 
-# Go
+# Go <a name="why"></a>
 
 Why Use Go ? There's Node JS
 
@@ -1588,5 +1592,189 @@ func main() {
   x := factorialLoop(5);
   fmt.Println("The factorialLoop value of 5 is = ", x)
 }
+```
+
+# Pointers
+
+Pointers are just a some thing that will point into the address of some variable of a value.   
+
+For example:
+
+```go
+package main
+
+import("fmt")
+
+func main() {
+  a := 42
+  fmt.Println(a)
+  fmt.Println(&a) // get the memory address
+  fmt.Printf("%T\n", a)
+  fmt.Printf("%T\n", &a)
+  // var b *int = &a
+  b := &a
+  fmt.Println(*b) // dereference of the address ( which will get the value of a) we declare before
+  fmt.Println(a) 
+  fmt.Printf("%T\n", &b)
+}
+```
+
+it'll output just like below
+
+```sh
+42
+0xc000018120
+int
+*int
+```
+The important thing about pointers is that in Go, everything is a pass by value.  
+
+## Using the pointer for set method
+
+In creating the type struct we can try to create the set method using the 
+pointer feature.
+
+What method attach to it.
+
+For example:
+
+```go 
+package main
+
+import(
+    "fmt" 
+    "math"
+)
+
+type circle struct {
+    radius float64
+}
+
+// method area is attached to shape type
+type shape interface {
+    area() float64
+    area_with_no_pointer_receiver() float64
+}
+
+
+// without pointer receiver
+func ( c circle ) area_with_no_pointer_receiver() float64 {
+    return math.Pi * c.radius * c.radius
+}
+
+// with pointer receiver
+func ( c *circle ) area() float64 {
+    return math.Pi * c.radius * c.radius
+}
+
+// getting the info
+func info ( s shape ) {
+    fmt.Println("area info", s.area());
+}
+
+// create the info_ function to implement a function without receiving the parameter  
+func info_ ( s shape ) {
+    fmt.Println("area info_", s.area_with_no_pointer_receiver());
+}
+
+func main() { 
+    c := circle { 
+        radius: 5,
+    }
+
+    // a pointer receiver will run the function, 
+    // pointer to from the circle
+    info(&c);
+
+    // a function without the pointer receiver  will run the address 
+    info_(&c);
+
+    // this will not run 
+    // info(c);
+}
+
+```
+
+# JSON
+
+Javascript Object Notation marshalling a JSON which is a data that transferred into other application.
+go into golang.org and read the package documentation or godoc.org which is /encoding/json 
+
+There's a marshal and unmarshalling using the package json we can create the encoding.
+
+Marshalling is turning our define struct into json.
+
+## Marshalling
+
+```go
+package main
+import("fmt")
+
+type person struct {
+    first string
+    last string
+    age int
+}
+
+
+func main() {
+    p1 := person {
+        first :"Testing",
+        last: "1", 
+        age: 32
+    }
+
+    p2 := person {
+        first :"Testing",
+        last: "2", 
+        age: 33
+    }
+
+    people := []person{p1, p2}
+
+    fmt.Println("people")
+}
+
+```
+
+this'll print the value of person slice but if we want to serve it as 
+json we need to use the json.Marshal(slice) and to be noted that the person struct
+should be have the Capital the struct just like 
+
+```go
+type person struct {
+    first string
+}
+```
+should be 
+
+```go
+type person struct {
+    First string
+}
+```
+
+According to the documentation we can try to create the person struct json with the code below
+
+
+```go
+byteOfString, err := json.Marshal(<<struct>>)
+
+// if there's an error print out the error  
+if err != nil {
+    fmt.Println(err)
+}
+
+// if there's no error print the string literal as json
+fmt.Println(string(byteOfString))
+```
+
+then after that we can see the results just like below
+
+```json
+[
+{"First":"Testing","Last":"1","Age":32},
+{"First":"Testing","Last":"2","Age":33}
+]
 ```
 
