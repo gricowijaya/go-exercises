@@ -1,7 +1,19 @@
 # Table of Contents
 1. [Roadmap References](#roadmap)
 2. [Why Go?](#why)
-   2.1 [Practice](#practice)
+   1. [Practice](#practice)
+   2. [Local Documentation](#localdocumentation)
+   3. [Go Mod](#gomod)
+   4. [Go Workspace](#goworkspace)
+   5. [Go Help](#gohelp)
+   6. [Environment Variables](#environment)
+   7. [Create Module](#createmodule)
+   8. [Auto Formatting](#autoformatting)
+   9. [Go Modules](#gomodules)
+   10. [Initialize](#initialize)
+   11. [Add Dependency](#adddependency)
+   12. [Upgrade Dependency](#upgradedependency)
+3. [Packages](#packages)
 
 * NOTES : The documentation with pdf version is at the file ./documentation/readme.pdf
 
@@ -87,7 +99,7 @@ so the directory of every exercices should be
 
 That way we can try to run the compiled program using Makefile.
 
-## Running locally documentation
+## Running local documentation <a name="localdocumentation"> </a>
 
 documentation at 
 
@@ -97,11 +109,11 @@ godoc -http=:6060
 
 ---
 
-## Go Modules
+## Go Modules <a name="gomod"></a>   
 
 It's an additional features into which to simplify the package for Go Workspace Program.    
 
-## Go Workspace
+## Go Workspace <a name="goworkspace"></a>
 
 Go Workspace is opinionated for efficiency and organized project with the team. There's certain convention in the go workspace. Example for using the Folder
 
@@ -119,14 +131,15 @@ Go Workspace is opinionated for efficiency and organized project with the team. 
 
 The `pkg` folder is to put the file of compiled archived library so we don't need to recompile.  
 
-## Go Help Command
+## Go Help Command <a name="gohelp"></a>
+
 
 ```bash
 go help
 ```
 ---
 
-## Environment Variables
+## Environment Variables <a name="environment"></a>
 
 Two Important Environment Variables
 
@@ -141,7 +154,7 @@ Just Type
 go env 
 ```
 
-## Create the module. 
+## Create the module.  <a name="createmodule"></a>
 
 First of all we need to create the module in the project directory with this command 
 
@@ -149,7 +162,7 @@ First of all we need to create the module in the project directory with this com
 go mod init <name of the module>
 ```
 
-## Auto Formatting the Files
+## Auto Formatting the Files <a name="autoformatting"></a>
 
 So Go have this features with the command `fmt` so all code will look the same. Just run 
 
@@ -187,7 +200,8 @@ func main() {
 }
 ```
 
-## Go Modules
+## Go Modules <a name="gomodules"></a>
+
 
 Go Modules is to managing the packages we install, so if our software is dependant about a software we should just configure it with the go modules.
 
@@ -195,7 +209,7 @@ ref: https://go.dev/blog/using-go-modules
 
 OCT 15th WISUDA KA OKA.
 
-## Initialize
+## Initialize <a name="initialize"></a>
 
 creates a new module
 
@@ -260,7 +274,7 @@ after that we can get the go.mod file.
 
 we can try to cat the `go.mod` file
 
-## Adding the dependency
+## Adding the dependency <a name="adddependency"></a>
 
 ```bash
 go get github.com/rsc/quote
@@ -298,7 +312,7 @@ To get all the packages
 
 NOTES : both `go.mod` and `go.sum` must be checked in the version control 
 
-## Upgrading the dependency
+## Upgrading the dependency <a name="upgradedependency"></a>
 
 We should list the file first such as using this command:
 
@@ -328,7 +342,7 @@ to specify the version
 go get rsc.io/sampler@v0.3.0
 ```
 
-# Packages
+# Packages <a name="packages"></a>
 
 To Use the standard library you can use this link to read the documentation
 
