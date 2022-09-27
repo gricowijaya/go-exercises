@@ -2,7 +2,7 @@
 
 The Documentation of the Code is in the Wiki Pages of this repo please kindly check to read the full module for practice
 
-** Chapter 1 ** 
+**Chapter 1**
 
 * [Roadmap References](https://github.com/gricowijaya/go-exercises/wiki/Roadmap)
 * [Why Go?](https://github.com/gricowijaya/go-exercises/wiki/Why-Go%3F)
@@ -10,7 +10,7 @@ The Documentation of the Code is in the Wiki Pages of this repo please kindly ch
 * [Short Declaration Operator](https://github.com/gricowijaya/go-exercises/wiki/Short-Declaration-Operator)
 * [Control Flow](https://github.com/gricowijaya/go-exercises/wiki/Control-Flow)
 
-** Chapter 2 ** 
+**Chapter 2** 
 
 * [DSA](https://github.com/gricowijaya/go-exercises/wiki/DSA)
 * [Structs](https://github.com/gricowijaya/go-exercises/wiki/Structs)
