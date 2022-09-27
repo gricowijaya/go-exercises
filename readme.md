@@ -19,4 +19,5 @@ The Documentation of the Code is in the Wiki Pages of this repo please kindly ch
 * [JSON](https://github.com/gricowijaya/go-exercises/wiki/JSON)
 * [I/O File](https://github.com/gricowijaya/go-exercises/wiki/File)
 * [Sorting](https://github.com/gricowijaya/go-exercises/wiki/Sorting)
+* [Encryption](https://github.com/gricowijaya/go-exercises/wiki/Encryption)
 
