@@ -1,6 +1,6 @@
 # Table of Contents
 
-The Documentation of the Code is in the Wiki Pages of this repo please kindly check to read the full module for practice
+The Documentation of the Code is in the [Wiki](https://github.com/gricowijaya/go-exercises/wiki) Pages of this repo please kindly check to read the full module for practice
 
 **Chapter 1**
 
