@@ -20,6 +20,9 @@ The Documentation of the Code is in the [Wiki](https://github.com/gricowijaya/go
 * [I/O File](https://github.com/gricowijaya/go-exercises/wiki/File)
 * [Sorting](https://github.com/gricowijaya/go-exercises/wiki/Sorting)
 * [Encryption](https://github.com/gricowijaya/go-exercises/wiki/Encryption)
+
+**Chapter 3**
+
 * [Concurrency](https://github.com/gricowijaya/go-exercises/wiki/Concurrency)
 * [Channels](https://github.com/gricowijaya/go-exercises/wiki/Channels)
 * [Error Handling](https://github.com/gricowijaya/go-exercises/wiki/Error-Handling)
