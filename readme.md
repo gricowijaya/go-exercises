@@ -22,4 +22,6 @@ The Documentation of the Code is in the [Wiki](https://github.com/gricowijaya/go
 * [Encryption](https://github.com/gricowijaya/go-exercises/wiki/Encryption)
 * [Concurrency](https://github.com/gricowijaya/go-exercises/wiki/Concurrency)
 * [Channels](https://github.com/gricowijaya/go-exercises/wiki/Channels)
+* [Error Handling](https://github.com/gricowijaya/go-exercises/wiki/Error-Handling)
+* [Go Documentation](https://github.com/gricowijaya/go-exercises/wiki/Go-Documentation)
 
