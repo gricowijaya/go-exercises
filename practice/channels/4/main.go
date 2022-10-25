@@ -33,8 +33,6 @@ func gen(q <-chan int) <-chan int {
         for i := 0; i < 100; i++ {
             c <- i
         }
-        q <- 1
-        close(c)
     }()
 
 	return c
