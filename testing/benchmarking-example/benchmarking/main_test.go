@@ -7,7 +7,7 @@ import (
 
 func TestGreet(t *testing.T) { 
     s := Greet("James")
-       if s != "Welome James" { 
+       if s != "Welcome James" { 
             t.Error("got", s, "expected", "Welcome James")
        }
 }

@@ -28,4 +28,5 @@ The Documentation of the Code is in the [Wiki](https://github.com/gricowijaya/go
 * [Error Handling](https://github.com/gricowijaya/go-exercises/wiki/Error-Handling)
 * [Go Documentation](https://github.com/gricowijaya/go-exercises/wiki/Go-Documentation)
 * [Testing](https://github.com/gricowijaya/go-exercises/wiki/Testing)
+* [Coverage](https://github.com/gricowijaya/go-exercises/wiki/Coverage)
 
